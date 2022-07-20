@@ -1,6 +1,14 @@
 package com.epam.edu.spring.core.template.repository;
 
 import com.epam.edu.spring.core.template.entity.Item;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+
+import java.util.List;
+
+@PropertySource("classpath:application.properties")
 
 /**
  * Репозиторий, основанный на классе ArrayList.
@@ -18,11 +26,15 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
         return false;
     }
 
-    void setInitialSequence(int val) {
-        //TODO
+    @Autowired
+    void setInitialSequence(@Value("${initial.sequence}") int initialSequenceProperties) {
+        this.initialSequence = initialSequenceProperties;
     }
 
+    @Autowired
+    @Qualifier("itemRepositoryArrayList")
     void setHolder() {
+
         //TODO
     }
 }

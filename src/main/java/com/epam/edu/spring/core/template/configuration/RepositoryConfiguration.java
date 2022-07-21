@@ -13,12 +13,12 @@ import java.util.ArrayList;
 public class RepositoryConfiguration {
 
     @Bean
-    ItemRepository itemRepositoryArrayList() {
+    ArrayListItemRepository arrayListItemRepository() {
         return new ArrayListItemRepository();
     }
 
     @Bean
-    ItemRepository itemRepositoryLinkedList() {
+    LinkedListItemRepository linkedListItemRepository() {
         return new LinkedListItemRepository();
     }
 }

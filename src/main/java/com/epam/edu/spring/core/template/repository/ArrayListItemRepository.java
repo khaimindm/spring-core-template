@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @PropertySource("classpath:application.properties")
@@ -32,9 +33,8 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
     }
 
     @Autowired
-    @Qualifier("itemRepositoryArrayList")
+    @Qualifier("arrayListItemRepository")
     void setHolder() {
-
-        //TODO
+        this.holder = new ArrayList<>();
     }
 }

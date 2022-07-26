@@ -27,8 +27,13 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
         return false;
     }
 
+    @Value("${initial.sequence}")
+    private String stringInitialSequenceProperties;
+    int initialSequencePropertiesTemp = Integer.parseInt(stringInitialSequenceProperties);
+
     @Autowired
-    void setInitialSequence(@Value("${initial.sequence}") int initialSequenceProperties) {
+    void setInitialSequence(int initialSequenceProperties) {
+        //int initialSequenceProperties = Integer.parseInt(stringInitialSequenceProperties);
         this.initialSequence = initialSequenceProperties;
     }
 

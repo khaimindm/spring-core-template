@@ -30,8 +30,15 @@ public class SimpleItemService implements ItemService {
     @Autowired
     public void setItemRepository(@Qualifier("arrayListItemRepository") ItemRepository arrayListItemRepository,
                                   @Qualifier("linkedListItemRepository") ItemRepository linkedListItemRepository) {
-        this.itemRepository = itemRepository;
+        if (itemRepositoryImplementation == null) {
+            this.itemRepository = arrayListItemRepository;
+        }
+
+        if (itemRepositoryImplementation.equals("array")) {
+            this.itemRepository = arrayListItemRepository;
+        } else {
+            this.itemRepository = linkedListItemRepository;
+        }
     }
 
-    //private ItemRepository selectRepositoryType()
 }

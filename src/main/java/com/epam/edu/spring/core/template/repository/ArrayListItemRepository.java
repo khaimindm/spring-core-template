@@ -9,13 +9,17 @@ import org.springframework.context.annotation.PropertySource;
 import java.util.ArrayList;
 import java.util.List;
 
-@PropertySource("classpath:application.properties")
+//@PropertySource("classpath:application.properties")
 
 /**
  * Репозиторий, основанный на классе ArrayList.
  * initialSequence должен браться из application.properties
  */
 public class ArrayListItemRepository extends AbstractRepository<Item> implements ItemRepository {
+
+    //ArrayListItemRepository test = new ArrayListItemRepository();
+
+
 
     @Override
     public Item getById(long id) {
@@ -24,15 +28,16 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
 
     @Override
     public boolean createItem(Item item) {
-        return false;
+        this.holder.add(item);
+        return true;
     }
 
-    @Value("${initial.sequence}")
+    /*@Value("${initial.sequence}")
     private String stringInitialSequenceProperties;
-    int initialSequencePropertiesTemp = Integer.parseInt(stringInitialSequenceProperties);
+    int initialSequenceProperties = Integer.parseInt(stringInitialSequenceProperties);*/
 
     @Autowired
-    void setInitialSequence(int initialSequenceProperties) {
+    void setInitialSequence(@Qualifier("initialSequenceProperties") int initialSequenceProperties) {
         //int initialSequenceProperties = Integer.parseInt(stringInitialSequenceProperties);
         this.initialSequence = initialSequenceProperties;
     }
@@ -40,6 +45,6 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
     @Autowired
     @Qualifier("arrayListItemRepository")
     void setHolder() {
-        this.holder = new ArrayList<>();
+        //this.holder = new ArrayList<>();
     }
 }

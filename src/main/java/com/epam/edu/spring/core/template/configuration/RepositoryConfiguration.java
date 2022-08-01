@@ -21,7 +21,6 @@ public class RepositoryConfiguration {
 
     @Bean
     ItemRepository arrayListItemRepository() {
-        //this.itemRepository = new ArrayListItemRepository();
         return new ArrayListItemRepository();
     }
 

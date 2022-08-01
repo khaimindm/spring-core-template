@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 import java.util.ArrayList;
 import java.util.List;
 
-@PropertySource("classpath:application.properties")
+//@PropertySource("classpath:application.properties")
 
 /**
  * Репозиторий, основанный на классе ArrayList.
@@ -24,22 +24,16 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
 
     @Override
     public boolean createItem(Item item) {
-        return false;
-    }
-
-    @Value("${initial.sequence}")
-    private String stringInitialSequenceProperties;
-    int initialSequencePropertiesTemp = Integer.parseInt(stringInitialSequenceProperties);
-
-    @Autowired
-    void setInitialSequence(int initialSequenceProperties) {
-        //int initialSequenceProperties = Integer.parseInt(stringInitialSequenceProperties);
-        this.initialSequence = initialSequenceProperties;
-    }
-
-    @Autowired
-    @Qualifier("arrayListItemRepository")
-    void setHolder() {
         this.holder = new ArrayList<>();
+        holder.add(item);
+        return true;
+    }
+
+    @Autowired
+    void setInitialSequence(@Qualifier("initialSequenceProperties") int val) {
+        this.initialSequence = val;
+    }
+
+    void setHolder() {
     }
 }

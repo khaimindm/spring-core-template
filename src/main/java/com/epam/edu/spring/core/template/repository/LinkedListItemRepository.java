@@ -22,7 +22,9 @@ public class LinkedListItemRepository extends AbstractRepository<Item> implement
 
     @Override
     public boolean createItem(Item item) {
-        return false;
+        this.holder = new LinkedList<>();
+        holder.add(item);
+        return true;
     }
 
     void setInitialSequence(int val) {
@@ -30,9 +32,8 @@ public class LinkedListItemRepository extends AbstractRepository<Item> implement
         this.initialSequence = x;
     }
 
-    @Autowired
-    @Qualifier("linkedListItemRepository")
+    //@Autowired
+    //@Qualifier("linkedListItemRepository")
     void setHolder() {
-        this.holder = new LinkedList<>();
     }
 }

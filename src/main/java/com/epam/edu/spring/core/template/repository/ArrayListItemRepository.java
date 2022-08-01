@@ -24,7 +24,9 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
 
     @Override
     public boolean createItem(Item item) {
-        return false;
+        this.holder = new ArrayList<>();
+        holder.add(item);
+        return true;
     }
 
     @Value("${initial.sequence}")
@@ -32,14 +34,13 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
     int initialSequencePropertiesTemp = Integer.parseInt(stringInitialSequenceProperties);
 
     @Autowired
-    void setInitialSequence(int initialSequenceProperties) {
+    void setInitialSequence(int val) {
         //int initialSequenceProperties = Integer.parseInt(stringInitialSequenceProperties);
-        this.initialSequence = initialSequenceProperties;
+        this.initialSequence = val;
     }
 
-    @Autowired
-    @Qualifier("arrayListItemRepository")
+    //@Autowired
+    //@Qualifier("arrayListItemRepository")
     void setHolder() {
-        this.holder = new ArrayList<>();
     }
 }

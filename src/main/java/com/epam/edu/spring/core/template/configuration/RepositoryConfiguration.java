@@ -12,13 +12,16 @@ import java.util.ArrayList;
 @Configuration
 public class RepositoryConfiguration {
 
+    //private ItemRepository itemRepository;
+
     @Bean
-    ArrayListItemRepository arrayListItemRepository() {
+    ItemRepository arrayListItemRepository() {
+        //this.itemRepository = new ArrayListItemRepository();
         return new ArrayListItemRepository();
     }
 
     @Bean
-    LinkedListItemRepository linkedListItemRepository() {
+    ItemRepository linkedListItemRepository() {
         return new LinkedListItemRepository();
     }
 }

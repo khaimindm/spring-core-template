@@ -17,6 +17,10 @@ import java.util.List;
  */
 public class ArrayListItemRepository extends AbstractRepository<Item> implements ItemRepository {
 
+    public List getHolder() {
+        return holder;
+    }
+
     @Override
     public Item getById(long id) {
         return null;

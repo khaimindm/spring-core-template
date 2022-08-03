@@ -20,8 +20,9 @@ public class RepositoryConfiguration {
     //private ItemRepository itemRepository;
 
     @Bean
-    ItemRepository arrayListItemRepository() {
-        return new ArrayListItemRepository();
+    ArrayList arrayListItemRepository() {
+        //ItemRepository itemRepository = new ArrayListItemRepository();
+        return new ArrayListItemRepository().getHolder();
     }
 
     @Bean

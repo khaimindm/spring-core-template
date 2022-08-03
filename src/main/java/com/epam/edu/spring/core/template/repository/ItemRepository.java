@@ -8,4 +8,6 @@ public interface ItemRepository {
 
     boolean createItem(Item item);
 
+    ItemRepository getItemRepository();
+
 }

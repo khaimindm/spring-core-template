@@ -13,6 +13,10 @@ import java.util.Random;
  */
 public class LinkedListItemRepository extends AbstractRepository<Item> implements ItemRepository {
 
+    public LinkedListItemRepository() {
+        this.holder = new LinkedList<>();
+    }
+
     Random rand = new Random();
 
     @Override
@@ -22,7 +26,7 @@ public class LinkedListItemRepository extends AbstractRepository<Item> implement
 
     @Override
     public boolean createItem(Item item) {
-        this.holder = new LinkedList<>();
+        //this.holder = new LinkedList<>();
         holder.add(item);
         return true;
     }

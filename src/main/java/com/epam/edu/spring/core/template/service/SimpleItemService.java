@@ -1,7 +1,9 @@
 package com.epam.edu.spring.core.template.service;
 
 import com.epam.edu.spring.core.template.entity.Item;
+import com.epam.edu.spring.core.template.repository.ArrayListItemRepository;
 import com.epam.edu.spring.core.template.repository.ItemRepository;
+import com.epam.edu.spring.core.template.repository.LinkedListItemRepository;
 import com.epam.edu.spring.core.template.validator.ItemValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,8 +30,8 @@ public class SimpleItemService implements ItemService {
     }
 
     @Autowired
-    public void setItemRepository(@Qualifier("arrayListItemRepository") ItemRepository arrayListItemRepository,
-                                  @Qualifier("linkedListItemRepository") ItemRepository linkedListItemRepository) {
+    public void setItemRepository(@Qualifier("arrayListItemRepository") ArrayListItemRepository arrayListItemRepository,
+                                  @Qualifier("linkedListItemRepository") LinkedListItemRepository linkedListItemRepository) {
         if (itemRepositoryImplementation == null) {
             this.itemRepository = arrayListItemRepository;
         }

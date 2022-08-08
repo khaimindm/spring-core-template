@@ -26,7 +26,8 @@ public class SimpleItemService implements ItemService {
 
     @Override
     public boolean createItem(Item item) {
-        return false;
+        itemRepository.createItem(item);
+        return true;
     }
 
     @Autowired

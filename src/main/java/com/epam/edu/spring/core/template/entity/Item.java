@@ -1,5 +1,8 @@
 package com.epam.edu.spring.core.template.entity;
 
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
+
 public class Item {
 
     private long id;

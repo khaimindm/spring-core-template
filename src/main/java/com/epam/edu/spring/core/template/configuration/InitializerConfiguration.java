@@ -25,9 +25,10 @@ public class InitializerConfiguration {
         return colorFactory().getObject();
     }
 
-    @Bean
+    /*@Bean
+    @Lazy(true)
     @Scope("prototype")
     public Item item(long id, String name, double price, Color color) {
         return new Item(id, name, price, color);
-    }
+    }*/
 }

@@ -13,8 +13,23 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:application.properties")
 public class SimpleItemService implements ItemService {
 
+    SimpleItemService simpleItemService;
+
     private ItemRepository itemRepository;
     private ItemValidator itemValidator;
+    
+    @Autowired
+    @Qualifier("arrayListItemRepository")
+    ArrayListItemRepository arrayListItemRepository;
+
+    @Autowired
+    @Qualifier("linkedListItemRepository")
+    LinkedListItemRepository linkedListItemRepository;
+
+    public SimpleItemService () {
+        //this.simpleItemService = new SimpleItemService();
+        this.itemRepository = arrayListItemRepository;
+    }
 
     @Value("${item.repository.implementation}")
     private String itemRepositoryImplementation;
@@ -26,13 +41,16 @@ public class SimpleItemService implements ItemService {
 
     @Override
     public boolean createItem(Item item) {
+        System.out.println(itemRepositoryImplementation);
+        simpleItemService.setItemRepository(arrayListItemRepository, linkedListItemRepository);
         itemRepository.createItem(item);
         return true;
     }
 
-    @Autowired
-    public void setItemRepository(@Qualifier("arrayListItemRepository") ArrayListItemRepository arrayListItemRepository,
-                                  @Qualifier("linkedListItemRepository") LinkedListItemRepository linkedListItemRepository) {
+    //@Autowired
+    public void setItemRepository(ArrayListItemRepository arrayListItemRepository, LinkedListItemRepository linkedListItemRepository) {
+        System.out.println(itemRepositoryImplementation);                
+
         if (itemRepositoryImplementation == null) {
             this.itemRepository = arrayListItemRepository;
         }

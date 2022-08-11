@@ -1,6 +1,7 @@
 package com.epam.edu.spring.core.template;
 
 import com.epam.edu.spring.core.template.entity.Color;
+import com.epam.edu.spring.core.template.service.ItemService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,21 +16,22 @@ import com.epam.edu.spring.core.template.entity.Item;
 import com.epam.edu.spring.core.template.service.SimpleItemService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestExecutionListeners({})
+//@TestExecutionListeners({})
 @ContextConfiguration(classes = MainConfiguration.class)
 public class SimpleItemServiceTest {
 
-    @Autowired
+    /*@Autowired
     @Qualifier("item")
-    private Item item;
+    private Item item;*/
 
     private Color color;
-    
-    //SimpleItemService simpleItemService = new SimpleItemService();
 
-    @Autowired
-    @Qualifier("simpleItemService")
-    SimpleItemService simpleItemService;
+    /*@Autowired
+    @Qualifier("itemService")
+    SimpleItemService simpleItemService;*/
+
+    /*@Autowired
+    public SimpleItemServiceTest() {}*/
 
     @Test
     public void checkCreationOfNewItem() {
@@ -55,7 +57,8 @@ public class SimpleItemServiceTest {
     @Test
     public void checkAddingItem() {        
         Item item = new Item(45, "test", 10.5, color);
-        simpleItemService.createItem(item);
+        ItemService itemService = new SimpleItemService();
+        itemService.createItem(item);
     }
 
 }

@@ -17,7 +17,8 @@ public class SimpleItemService implements ItemService {
 
     private ItemRepository itemRepository;
     private ItemValidator itemValidator;
-    
+
+
     @Autowired
     @Qualifier("arrayListItemRepository")
     ArrayListItemRepository arrayListItemRepository;
@@ -25,11 +26,6 @@ public class SimpleItemService implements ItemService {
     @Autowired
     @Qualifier("linkedListItemRepository")
     LinkedListItemRepository linkedListItemRepository;
-
-    public SimpleItemService () {
-        //this.simpleItemService = new SimpleItemService();
-        this.itemRepository = arrayListItemRepository;
-    }
 
     @Value("${item.repository.implementation}")
     private String itemRepositoryImplementation;
@@ -42,8 +38,10 @@ public class SimpleItemService implements ItemService {
     @Override
     public boolean createItem(Item item) {
         System.out.println(itemRepositoryImplementation);
-        simpleItemService.setItemRepository(arrayListItemRepository, linkedListItemRepository);
-        itemRepository.createItem(item);
+        //simpleItemService.setItemRepository(arrayListItemRepository, linkedListItemRepository);
+        ItemRepository itemRepository1 = new ArrayListItemRepository();
+        itemRepository1.createItem(item);
+        System.out.println("End");
         return true;
     }
 

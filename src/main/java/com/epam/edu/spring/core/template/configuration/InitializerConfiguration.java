@@ -3,6 +3,7 @@ package com.epam.edu.spring.core.template.configuration;
 import com.epam.edu.spring.core.template.entity.Color;
 import com.epam.edu.spring.core.template.entity.Item;
 import com.epam.edu.spring.core.template.factory.ColorFactory;
+import com.epam.edu.spring.core.template.service.ItemService;
 import com.epam.edu.spring.core.template.service.SimpleItemService;
 
 import org.springframework.context.annotation.Bean;
@@ -34,8 +35,8 @@ public class InitializerConfiguration {
         return new Item(id, name, price, color);
     }*/
 
-    @Bean
-    public SimpleItemService simpleItemService() {
+    /*@Bean
+    public ItemService itemService() {
         return new SimpleItemService();
-    }
+    }*/
 }

@@ -10,9 +10,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.ReflectionUtils;
+import java.lang.reflect.*;
 
 import com.epam.edu.spring.core.template.configuration.MainConfiguration;
 import com.epam.edu.spring.core.template.entity.Item;
+import com.epam.edu.spring.core.template.repository.ArrayListItemRepository;
+import com.epam.edu.spring.core.template.repository.ItemRepository;
 import com.epam.edu.spring.core.template.service.SimpleItemService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,14 +28,17 @@ public class SimpleItemServiceTest {
     @Qualifier("item")
     private Item item;*/
 
+    @Autowired
+    ArrayListItemRepository arrayListItemRepository;
+
     private Color color;
 
     /*@Autowired
     @Qualifier("itemService")
     SimpleItemService simpleItemService;*/
 
-    /*@Autowired
-    public SimpleItemServiceTest() {}*/
+    //@Autowired
+    //public SimpleItemServiceTest simpleItemServiceTest;
 
     @Test
     public void checkCreationOfNewItem() {
@@ -55,10 +62,20 @@ public class SimpleItemServiceTest {
     }
 
     @Test
-    public void checkAddingItem() {        
+    public void checkAddingItem() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {        
         Item item = new Item(45, "test", 10.5, color);
-        ItemService itemService = new SimpleItemService();
+        ItemRepository itemRepository = arrayListItemRepository;
+        ItemService itemService = new SimpleItemService(itemRepository);
+        //Constructor constructor;
+        /*try {
+            Constructor constructor = ReflectionUtils.accessibleConstructor(ItemRepository.class);
+            itemService = (ItemService) constructor.newInstance(itemRepository);
+        } catch (NoSuchMethodException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }*/       
         itemService.createItem(item);
+        System.out.println(itemRepository.getById(45).toString());
     }
 
 }

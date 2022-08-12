@@ -13,10 +13,14 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:application.properties")
 public class SimpleItemService implements ItemService {
 
-    SimpleItemService simpleItemService;
+    //SimpleItemService simpleItemService;
 
     private ItemRepository itemRepository;
     private ItemValidator itemValidator;
+
+    public SimpleItemService (ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
+    }
 
 
     @Autowired
@@ -39,8 +43,8 @@ public class SimpleItemService implements ItemService {
     public boolean createItem(Item item) {
         System.out.println(itemRepositoryImplementation);
         //simpleItemService.setItemRepository(arrayListItemRepository, linkedListItemRepository);
-        ItemRepository itemRepository1 = new ArrayListItemRepository();
-        itemRepository1.createItem(item);
+        //ItemRepository itemRepository1 = new ArrayListItemRepository();
+        itemRepository.createItem(item);
         System.out.println("End");
         return true;
     }

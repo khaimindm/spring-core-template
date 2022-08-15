@@ -33,9 +33,9 @@ public class SimpleItemServiceTest {
 
     private Color color;
 
-    /*@Autowired
-    @Qualifier("itemService")
-    SimpleItemService simpleItemService;*/
+    @Autowired
+    @Qualifier("simpleItemService")
+    SimpleItemService simpleItemService;
 
     //@Autowired
     //public SimpleItemServiceTest simpleItemServiceTest;
@@ -64,18 +64,14 @@ public class SimpleItemServiceTest {
     @Test
     public void checkAddingItem() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {        
         Item item = new Item(45, "test", 10.5, color);
-        ItemRepository itemRepository = arrayListItemRepository;
-        ItemService itemService = new SimpleItemService(itemRepository);
-        //Constructor constructor;
-        /*try {
-            Constructor constructor = ReflectionUtils.accessibleConstructor(ItemRepository.class);
-            itemService = (ItemService) constructor.newInstance(itemRepository);
-        } catch (NoSuchMethodException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }*/       
-        itemService.createItem(item);
-        System.out.println(itemRepository.getById(45).toString());
+        //ItemRepository itemRepository = arrayListItemRepository;
+        //ItemService itemService = new SimpleItemService(itemRepository);
+
+        //itemService.createItem(item);
+
+        simpleItemService.createItem(item);
+
+        //System.out.println(itemRepository.getById(45).toString());
     }
 
 }

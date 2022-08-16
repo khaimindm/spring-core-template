@@ -63,13 +63,17 @@ public class SimpleItemServiceTest {
 
     @Test
     public void checkAddingItem() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {        
-        Item item = new Item(0, "test", 10.5, color);
+        Item item = new Item(0, "name", 1.0, color);
+        Item item2 = new Item(0, "name2", 2.0, color);
+        Item item3 = new Item(0, "name3", 3.0, color);
         //ItemRepository itemRepository = arrayListItemRepository;
         //ItemService itemService = new SimpleItemService(itemRepository);
 
         //itemService.createItem(item);
 
         simpleItemService.createItem(item);
+        simpleItemService.createItem(item2);
+        simpleItemService.createItem(item3);
 
         //System.out.println(itemRepository.getById(45).toString());
     }

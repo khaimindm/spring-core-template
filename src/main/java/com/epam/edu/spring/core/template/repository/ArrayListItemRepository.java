@@ -18,14 +18,16 @@ import java.util.Random;
  * initialSequence должен браться из application.properties
  */
 public class ArrayListItemRepository extends AbstractRepository<Item> implements ItemRepository {
-
-    Item item;
+    
+    //ArrayListItemRepository arrayListItemRepository;
+    //Item item;
+    
+    //Random rand = new Random();
+    int idHolder = 1;
 
     public ArrayListItemRepository() {
-        this.holder = new ArrayList<>();        
-    }
-
-    Random rand = new Random();
+        this.holder = new ArrayList<>();                
+    }    
 
     /*public List getHolder() {
         return holder;
@@ -37,20 +39,19 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
     }
 
     @Override
-    public boolean createItem(Item item) {        
+    public boolean createItem(Item item) {
+        item.setId(idHolder);
+        idHolder++;
         holder.add(item);
         return true;
     }
 
     @Autowired
     void setInitialSequence(@Qualifier("initialSequenceProperties") int val) {
-        this.initialSequence = val;
+        this.initialSequence = val;        
     }
 
     void setHolder() {
-        int x = 1 + rand.nextInt(100 - 1 + 1);
-        if (Objects.isNull(item.getId())) {
-            
-        }
+        //idHolder = (int) this.initialSequence;
     }
 }

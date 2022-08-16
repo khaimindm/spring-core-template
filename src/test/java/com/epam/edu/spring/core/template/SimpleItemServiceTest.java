@@ -63,7 +63,7 @@ public class SimpleItemServiceTest {
 
     @Test
     public void checkAddingItem() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {        
-        Item item = new Item(45, "test", 10.5, color);
+        Item item = new Item(0, "test", 10.5, color);
         //ItemRepository itemRepository = arrayListItemRepository;
         //ItemService itemService = new SimpleItemService(itemRepository);
 

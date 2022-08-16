@@ -8,6 +8,8 @@ import org.springframework.context.annotation.PropertySource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Random;
 
 //@PropertySource("classpath:application.properties")
 
@@ -17,20 +19,13 @@ import java.util.List;
  */
 public class ArrayListItemRepository extends AbstractRepository<Item> implements ItemRepository {
 
-    //private ItemRepository itemRepository;
+    Item item;
 
     public ArrayListItemRepository() {
-        this.holder = new ArrayList<>();
-        //this.itemRepository = holder;
+        this.holder = new ArrayList<>();        
     }
 
-    /*@Override
-    public List getItemRepository() {
-        //itemRepository = new ArrayListItemRepository();
-        return holder;
-    }*/
-
-
+    Random rand = new Random();
 
     /*public List getHolder() {
         return holder;
@@ -42,8 +37,7 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
     }
 
     @Override
-    public boolean createItem(Item item) {
-        //this.holder = new ArrayList<>();
+    public boolean createItem(Item item) {        
         holder.add(item);
         return true;
     }
@@ -54,5 +48,9 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
     }
 
     void setHolder() {
+        int x = 1 + rand.nextInt(100 - 1 + 1);
+        if (Objects.isNull(item.getId())) {
+            
+        }
     }
 }

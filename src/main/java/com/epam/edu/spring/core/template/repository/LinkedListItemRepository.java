@@ -25,8 +25,7 @@ public class LinkedListItemRepository extends AbstractRepository<Item> implement
     }
 
     @Override
-    public boolean createItem(Item item) {
-        //this.holder = new LinkedList<>();
+    public boolean createItem(Item item) {        
         holder.add(item);
         return true;
     }
@@ -35,9 +34,7 @@ public class LinkedListItemRepository extends AbstractRepository<Item> implement
         int x = 1 + rand.nextInt(100 - 1 + 1);
         this.initialSequence = x;
     }
-
-    //@Autowired
-    //@Qualifier("linkedListItemRepository")
+            
     void setHolder() {
     }
 }

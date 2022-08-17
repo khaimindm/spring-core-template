@@ -13,6 +13,11 @@ import java.util.Random;
  */
 public class LinkedListItemRepository extends AbstractRepository<Item> implements ItemRepository {
 
+    @Autowired
+    LinkedListItemRepository linkedListItemRepository;
+
+    long idHolder;
+
     public LinkedListItemRepository() {
         this.holder = new LinkedList<>();
     }
@@ -33,8 +38,10 @@ public class LinkedListItemRepository extends AbstractRepository<Item> implement
     void setInitialSequence(int val) {
         int x = 1 + rand.nextInt(100 - 1 + 1);
         this.initialSequence = x;
+        linkedListItemRepository.setHolder();
     }
             
     void setHolder() {
+        idHolder = initialSequence;
     }
 }

@@ -1,6 +1,7 @@
 package com.epam.edu.spring.core.template;
 
 import com.epam.edu.spring.core.template.entity.Color;
+import com.epam.edu.spring.core.template.factory.ColorFactory;
 import com.epam.edu.spring.core.template.service.ItemService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -31,11 +32,17 @@ public class SimpleItemServiceTest {
     @Autowired
     ArrayListItemRepository arrayListItemRepository;
 
-    private Color color;
+    @Autowired
+    @Qualifier("colorFactory")
+    private ColorFactory colorFactory;
 
     @Autowired
     @Qualifier("simpleItemService")
     SimpleItemService simpleItemService;
+
+    @Autowired
+    @Qualifier("color")
+    Color color;
 
     //@Autowired
     //public SimpleItemServiceTest simpleItemServiceTest;
@@ -62,20 +69,20 @@ public class SimpleItemServiceTest {
     }
 
     @Test
-    public void checkAddingItem() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {        
-        Item item = new Item(0, "name", 1.0, color);
+    public void checkAddingItem() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        try {
+            color = colorFactory.getObject();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        Item item1 = new Item(0, "name1", 1.0, color);
         Item item2 = new Item(0, "name2", 2.0, color);
         Item item3 = new Item(0, "name3", 3.0, color);
-        //ItemRepository itemRepository = arrayListItemRepository;
-        //ItemService itemService = new SimpleItemService(itemRepository);
 
-        //itemService.createItem(item);
-
-        simpleItemService.createItem(item);
+        simpleItemService.createItem(item1);
         simpleItemService.createItem(item2);
         simpleItemService.createItem(item3);
 
-        //System.out.println(itemRepository.getById(45).toString());
     }
 
 }

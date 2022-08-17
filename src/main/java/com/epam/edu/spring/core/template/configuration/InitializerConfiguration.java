@@ -18,8 +18,8 @@ public class InitializerConfiguration {
     @Bean
     @Lazy(true)
     public ColorFactory colorFactory() {
-        ColorFactory factory = new ColorFactory();
-        return factory;
+        //ColorFactory factory = new ColorFactory();
+        return  new ColorFactory();
     }
 
     @Bean

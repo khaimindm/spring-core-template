@@ -20,6 +20,7 @@ import java.util.Random;
 public class ArrayListItemRepository extends AbstractRepository<Item> implements ItemRepository {
 
     @Autowired
+    @Qualifier("arrayListItemRepository")
     ArrayListItemRepository arrayListItemRepository;
     //Item item;
     
@@ -36,6 +37,12 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
 
     @Override
     public Item getById(long id) {
+        for (int i = 0; i < holder.size(); i++) {
+            Item forVerificationItem = holder.get(i);
+            if (forVerificationItem.getId() == id) {
+                return forVerificationItem;
+            }
+        }
         return null;
     }
 

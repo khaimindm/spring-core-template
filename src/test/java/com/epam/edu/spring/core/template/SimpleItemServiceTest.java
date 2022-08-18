@@ -81,11 +81,20 @@ public class SimpleItemServiceTest {
 
         simpleItemService.createItem(item1);
         simpleItemService.createItem(item2);
-        simpleItemService.createItem(item3);
+        simpleItemService.createItem(item3);        
 
         Item byIdItem = simpleItemService.getById(42);
         Assert.assertTrue(byIdItem.getName().equals("name1"));
         Assert.assertTrue(byIdItem.getPrice() == 1.0);
+    }
+
+    @Test
+    public void checkgetById() {
+        Item item1 = new Item(0, "name1", 1.0, color);
+        Item item2 = new Item(0, "name2", 2.0, color);
+        Item item3 = new Item(0, "name3", 3.0, color);        
+        
+        Assert.assertTrue(simpleItemService.getById(42).getPrice() == 1.0);
     }
 
 }

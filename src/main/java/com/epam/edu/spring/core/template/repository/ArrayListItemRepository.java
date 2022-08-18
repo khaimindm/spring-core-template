@@ -36,6 +36,12 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
 
     @Override
     public Item getById(long id) {
+        for (int i = 0; i < holder.size(); i++) {
+            Item item = holder.get(i);
+            if (item.getId() == id) {
+                return item;
+            }
+        }
         return null;
     }
 

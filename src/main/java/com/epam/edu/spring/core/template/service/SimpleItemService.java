@@ -42,7 +42,7 @@ public class SimpleItemService implements ItemService {
 
     @Override
     public Item getById(long id) {
-        return null;
+        return itemRepository.getById(id);        
     }
 
     @Override

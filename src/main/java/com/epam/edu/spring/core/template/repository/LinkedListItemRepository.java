@@ -27,6 +27,12 @@ public class LinkedListItemRepository extends AbstractRepository<Item> implement
 
     @Override
     public Item getById(long id) {
+        for (int i = 0; i < holder.size(); i++) {
+            Item forVerificationItem = holder.get(i);
+            if (forVerificationItem.getId() == id) {
+                return forVerificationItem;
+            }
+        }
         return null;
     }
 
@@ -47,8 +53,9 @@ public class LinkedListItemRepository extends AbstractRepository<Item> implement
         this.initialSequence = val;
         linkedListItemRepository.setHolder();
     }
-            
+
     void setHolder() {
         idHolder = initialSequence;
     }
+
 }

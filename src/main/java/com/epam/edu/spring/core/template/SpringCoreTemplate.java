@@ -12,16 +12,14 @@ public class SpringCoreTemplate {
 
 	public static void main(String[] args) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(MainConfiguration.class);
-		//LinkedListItemRepository linkedListItemRepository = context.getBean("linkedListItemRepository", LinkedListItemRepository.class);
+		LinkedListItemRepository linkedListItemRepository = context.getBean("linkedListItemRepository", LinkedListItemRepository.class);
 
 		//ArrayListItemRepository arrayListItemRepository = context.getBean("arrayListItemRepository", ArrayListItemRepository.class);
 
-		SimpleItemService simpleItemService = context.getBean("simpleItemService", SimpleItemService.class);
-		//System.out.println(simpleItemService.getItemRepositoryImplementation());
+		//SimpleItemService simpleItemService = context.getBean("simpleItemService", SimpleItemService.class);
 
 		/*Color color = context.getBean("color", Color.class);
 		System.out.println(color.name());*/
-		
 	}
 
 }
